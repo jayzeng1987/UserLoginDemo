@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController (){
-    int _keyboardHeight;
+    int _offset;
     BOOL _hasMoveView;
 }
 
@@ -27,17 +27,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self addKeyboardObserver];
+    
     [self initLoginView];
     
     self.txtAccount.delegate = self;
     self.txtPassword.delegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self addKeyboardObserver];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
  #pragma mark - Navigation
@@ -123,8 +133,6 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    
-    _keyboardHeight = 253;
 }
 
 //当键盘出现时调用
@@ -134,18 +142,44 @@
     NSDictionary *userInfo = [aNotification userInfo];
     NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardRect = [aValue CGRectValue];
-    int height = keyboardRect.size.height;
-    int width = keyboardRect.size.width;
-    NSLog(@"键盘高度是  %d",height);
-    NSLog(@"键盘宽度是  %d",width);
     
-    _keyboardHeight = height;
+    int keyboardHeight = keyboardRect.size.height;
+    NSLog(@"键盘高度是  %d", keyboardHeight);
+    
+    // Get animation info from userInfo
+    CGRect loginViewFrame = self.loginView.frame;
+    
+    //计算偏移量
+    _offset = self.view.frame.size.height - keyboardHeight - (loginViewFrame.origin.y + loginViewFrame.size.height + 10);
+    NSLog(@"offset: %d", _offset);
+    
+    if (_offset < 0 && !_hasMoveView) {
+        _hasMoveView = YES;
+        CGRect frame = self.view.frame;
+        frame.origin.y = _offset;
+        [UIView animateWithDuration:0.25
+                         animations:^{
+                             self.view.frame = frame;
+                         }];
+    }
+    
 }
 
 //当键盘退出时调用
 - (void)keyboardWillHide:(NSNotification *)aNotification
 {
+    _hasMoveView = NO;
     
+    CGRect inputFrame = self.view.frame;
+    
+    if (_offset<0) {
+        inputFrame.origin.y = 0;
+        [UIView animateWithDuration:0.25
+                         animations:^{
+                             self.view.frame = inputFrame;
+                         }];
+    }
+   
 }
 
 #pragma mark Listen TextField Events
@@ -177,8 +211,8 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"touchesBegan!!!");
-    _hasMoveView = NO;
-    if (self.currentTextField != nil) {
+    
+    if (self.currentTextField != nil && ![self.currentTextField isExclusiveTouch]) {
         [self.currentTextField resignFirstResponder];
     }
 }
@@ -205,35 +239,14 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     NSLog(@"UITextField Delegate: textFieldDidBeginEditing");
     self.currentTextField = textField;
-    
-    CGRect loginViewFrame = self.loginView.frame;
-    int offset = self.view.frame.size.height - _keyboardHeight - (loginViewFrame.origin.y + loginViewFrame.size.height + 10);
-    NSLog(@"offset : %d", offset);
-    
-    if(offset < 0 && !_hasMoveView){
-        _hasMoveView = YES;
-        
-        [self moveView:CGRectMake(0.0f, offset, self.view.frame.size.width, self.view.frame.size.height) animationDuration:0.3f];
-        
-    }
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     NSLog(@"UITextField Delegate: textFieldDidEndEditing");
-    if (!_hasMoveView) {
-        NSLog(@"Recover the view!");
-        [self moveView:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) animationDuration:0.3f];
-    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     NSLog(@"UITextField Delegate: textFieldShouldReturn");
-    _hasMoveView = NO;
-    
-//    //if (_hasMoveView) {
-//        NSLog(@"Reset the view!");
-//        self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-//    //}
 
     if (textField == self.txtAccount) {
         [self.txtPassword becomeFirstResponder];
@@ -245,6 +258,7 @@
 }
 
 #pragma mark Helpful methods
+//no need now.
 -(void)moveView:(CGRect)frame animationDuration:(NSTimeInterval)intervial
 {
     NSTimeInterval animationDuration = intervial;

@@ -210,7 +210,7 @@
                             <constraint firstAttribute="trailing" secondItem="tUO-pg-mHA" secondAttribute="trailing" constant="20" id="ULK-Qh-Ayj"/>
                             <constraint firstItem="HN3-cH-KCg" firstAttribute="leading" secondItem="8Cm-yp-HIv" secondAttribute="leading" constant="20" id="ky4-gk-GyD"/>
                             <constraint firstItem="HN3-cH-KCg" firstAttribute="top" secondItem="W4y-wP-aK7" secondAttribute="bottom" constant="75" id="nKm-Iq-3t4">
-                                <variation key="widthClass=compact" constant="120"/>
+                                <variation key="widthClass=compact" constant="50"/>
                             </constraint>
                         </constraints>
                         <variation key="default">
