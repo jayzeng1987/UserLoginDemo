@@ -217,6 +217,7 @@
 				TargetAttributes = {
 					51EF704C1CBBD35000E465C2 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = TFACG9W7NW;
 					};
 					51EF70651CBBD35000E465C2 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -423,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = UserLogin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.genvict.Jayz.UserLogin;
@@ -434,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = UserLogin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.genvict.Jayz.UserLogin;
@@ -508,6 +511,7 @@
 				51EF707C1CBBD35000E465C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		51EF707D1CBBD35000E465C2 /* Build configuration list for PBXNativeTarget "UserLoginTests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +520,7 @@
 				51EF707F1CBBD35000E465C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		51EF70801CBBD35000E465C2 /* Build configuration list for PBXNativeTarget "UserLoginUITests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +529,7 @@
 				51EF70821CBBD35000E465C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

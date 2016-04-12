@@ -173,6 +173,15 @@
         self.btnLogin.layer.backgroundColor = [UIColor colorWithRed:149/255.0 green:149/255.0 blue:149/255.0 alpha:1].CGColor;
     }
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touchesBegan!!!");
+    _hasMoveView = NO;
+    if (self.currentTextField != nil) {
+        [self.currentTextField resignFirstResponder];
+    }
+}
     
 - (IBAction)onCancelClicked:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
@@ -201,30 +210,30 @@
     int offset = self.view.frame.size.height - _keyboardHeight - (loginViewFrame.origin.y + loginViewFrame.size.height + 10);
     NSLog(@"offset : %d", offset);
     
-    if(offset < 0){
+    if(offset < 0 && !_hasMoveView){
         _hasMoveView = YES;
         
-        NSTimeInterval animationDuration = 0.30f;
-        [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-        [UIView setAnimationDuration:animationDuration];
-        
-        self.view.frame = CGRectMake(0.0f, offset, self.view.frame.size.width, self.view.frame.size.height);
-        
-        [UIView commitAnimations];
+        [self moveView:CGRectMake(0.0f, offset, self.view.frame.size.width, self.view.frame.size.height) animationDuration:0.3f];
         
     }
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     NSLog(@"UITextField Delegate: textFieldDidEndEditing");
+    if (!_hasMoveView) {
+        NSLog(@"Recover the view!");
+        [self moveView:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) animationDuration:0.3f];
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     NSLog(@"UITextField Delegate: textFieldShouldReturn");
+    _hasMoveView = NO;
     
-    if (_hasMoveView) {
-        self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    }
+//    //if (_hasMoveView) {
+//        NSLog(@"Reset the view!");
+//        self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+//    //}
 
     if (textField == self.txtAccount) {
         [self.txtPassword becomeFirstResponder];
@@ -235,10 +244,16 @@
     return YES;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+#pragma mark Helpful methods
+-(void)moveView:(CGRect)frame animationDuration:(NSTimeInterval)intervial
 {
-    NSLog(@"touchesBegan!!!");
-    [self.currentTextField resignFirstResponder];
+    NSTimeInterval animationDuration = intervial;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    
+    self.view.frame = frame;
+    
+    [UIView commitAnimations];
 }
 
 
