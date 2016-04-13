@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "Define.h"
 
 @interface LoginViewController (){
     int _offset;
@@ -29,9 +30,7 @@
     // Do any additional setup after loading the view.
     
     [self initLoginView];
-    
-    self.txtAccount.delegate = self;
-    self.txtPassword.delegate = self;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -59,7 +58,28 @@
  }
  */
 
-#pragma mark Login View Style
+#pragma mark - Init Login View Style
+-(void)initLoginView{
+    
+    //set navigationBar style
+    [self setNavigationBarStyle];
+    
+    //set login view style
+    [self setLoginViewStyle];
+    
+    //set login button corner radius.
+    [self setLoginBtnStyle];
+    
+    //set navigation back button style
+    [self setNavigationBackButtonStyle];
+    
+    //[self addTextFieldDidChangeListener];
+    
+    //set textfield delegate
+    self.txtAccount.delegate = self;
+    self.txtPassword.delegate = self;
+}
+
 -(void)setTextFieldLeftView:(UITextField*)object leftView:(CGRect) imgRect image:(NSString*)name backgroundView:(CGRect) bgRect{
     //创建UIImageView
     UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:name]];
@@ -77,12 +97,7 @@
 
 }
 
--(void)setLoginBtnStyle{
-    self.btnLogin.layer.cornerRadius = 5.0f;
-}
-
--(void)initLoginView{
-    
+-(void)setLoginViewStyle{
     //set login view style.
     [self.loginView setBackgroundColor:[UIColor whiteColor]];
     //[[self.loginView layer] setCornerRadius:4];
@@ -98,17 +113,44 @@
     //self.loginView.layer.cornerRadius = 4.0f;
     //self.loginView.layer.borderWidth = 1.5f;
     //self.loginView.layer.borderColor = [UIColor grayColor].CGColor;
-    
-    //set login button corner radius.
-    [self setLoginBtnStyle];
-    
-    //[self addTextFieldDidChangeListener];
-    
-    //init navigation
-    [self initNavigationBackButton];
+
 }
 
--(void)initNavigationBackButton{
+-(void)setLoginBtnStyle{
+    self.btnLogin.layer.cornerRadius = 5.0f;
+}
+
+-(void)setNavigationBarStyle {
+//    //设置navigationBar title 颜色
+//    UIColor * color = [UIColor colorWithRed:128/255.0f green:128/255.0f blue:128/255.0f alpha:1.0f];
+//    method 1:
+//    NSDictionary* dict = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
+//    self.navigationController.navigationBar.titleTextAttributes = dict;
+//    
+//    method 2:
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : color}];
+//    
+//    method 3:
+//    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:color}];
+    
+    
+    //NavigationBar title字体、大小及颜色
+    //UIFont *font = [UIFont fontWithName:@"Heiti SC" size:20 ];
+    //UIColor *color = [UIColor colorWithRed:128/255.0f green:128/255.0f blue:128/255.0f alpha:1.0f];
+
+    UIFont *font = [UIFont systemFontOfSize:18];
+    UIColor *color = [UIColor whiteColor];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, color, NSForegroundColorAttributeName, nil];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:dict];
+    
+    //设置NavigationBar背景颜色
+    UIColor *bgColor = UIColorFromRGB(0xC00000); //UIColorFromRGB 是自己定义的宏
+    [[UINavigationBar appearance] setBarTintColor:bgColor];
+    
+}
+
+-(void)setNavigationBackButtonStyle{
     //隐藏backBarButtonItem 文字，只显示<
     //    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     
@@ -120,7 +162,9 @@
     [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
 }
 
-#pragma mark Keyboard Events
+
+
+#pragma mark - Keyboard Events
 -(void)addKeyboardObserver{
     //增加监听，当键盘出现或改变时收出消息
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -182,7 +226,7 @@
    
 }
 
-#pragma mark Listen TextField Events
+//#pragma mark - Listen TextField Events
 //no need now.
 //-(void) textFieldDidChange:(UITextField*) textField{
 //    NSLog(@"TextFiled changed: %@", textField.text);
@@ -195,7 +239,7 @@
 
 
 
-#pragma mark Process Events
+#pragma mark - Process Events
 -(void) textFieldDidChange:(UITextField*) textField{
     NSLog(@"TextFiled changed: %@", textField.text);
     NSString* account = [self.txtAccount.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -235,7 +279,7 @@
     [self textFieldDidChange:(UITextField*)sender];
 }
 
-#pragma mark TextField Delegate
+#pragma mark - TextField Delegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     NSLog(@"UITextField Delegate: textFieldDidBeginEditing");
     self.currentTextField = textField;
@@ -257,7 +301,7 @@
     return YES;
 }
 
-#pragma mark Helpful methods
+#pragma mark - Helpful methods
 //no need now.
 -(void)moveView:(CGRect)frame animationDuration:(NSTimeInterval)intervial
 {
