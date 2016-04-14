@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2169302E7680A28F05E847 /* libPods-UserLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 106FAABF3F0566725E1B7D24 /* libPods-UserLogin.a */; };
 		51EF70521CBBD35000E465C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EF70511CBBD35000E465C2 /* main.m */; };
 		51EF70551CBBD35000E465C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EF70541CBBD35000E465C2 /* AppDelegate.m */; };
 		51EF70581CBBD35000E465C2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EF70571CBBD35000E465C2 /* ViewController.m */; };
@@ -17,6 +18,7 @@
 		51EF70761CBBD35000E465C2 /* UserLoginUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EF70751CBBD35000E465C2 /* UserLoginUITests.m */; };
 		51EF70851CBBD5CC00E465C2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EF70841CBBD5CC00E465C2 /* LoginViewController.m */; };
 		51EF70881CBBF61B00E465C2 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EF70871CBBF61B00E465C2 /* LoginView.m */; };
+		51FEB1A01CBFE7C600086833 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51FEB19F1CBFE7C600086833 /* Login.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		106FAABF3F0566725E1B7D24 /* libPods-UserLogin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UserLogin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AFF1A7638E9E9EC6F73723A /* Pods-UserLogin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserLogin.release.xcconfig"; path = "Pods/Target Support Files/Pods-UserLogin/Pods-UserLogin.release.xcconfig"; sourceTree = "<group>"; };
 		51D7AD091CBEA3E60081C17A /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		51EF704D1CBBD35000E465C2 /* UserLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51EF70511CBBD35000E465C2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 		51EF70841CBBD5CC00E465C2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		51EF70861CBBF61B00E465C2 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		51EF70871CBBF61B00E465C2 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		51FEB19F1CBFE7C600086833 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		83889F2E2ED8C210346F5BEF /* Pods-UserLogin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserLogin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UserLogin/Pods-UserLogin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D2169302E7680A28F05E847 /* libPods-UserLogin.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46BD1E053069878669BECE0B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83889F2E2ED8C210346F5BEF /* Pods-UserLogin.debug.xcconfig */,
+				4AFF1A7638E9E9EC6F73723A /* Pods-UserLogin.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		51EF70441CBBD35000E465C2 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +108,8 @@
 				51EF70691CBBD35000E465C2 /* UserLoginTests */,
 				51EF70741CBBD35000E465C2 /* UserLoginUITests */,
 				51EF704E1CBBD35000E465C2 /* Products */,
+				46BD1E053069878669BECE0B /* Pods */,
+				CFF1CCC44F2D90BF1A41AB2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +131,7 @@
 				51EF70561CBBD35000E465C2 /* ViewController.h */,
 				51EF70571CBBD35000E465C2 /* ViewController.m */,
 				51EF70591CBBD35000E465C2 /* Main.storyboard */,
+				51FEB19F1CBFE7C600086833 /* Login.storyboard */,
 				51EF705C1CBBD35000E465C2 /* Assets.xcassets */,
 				51EF705E1CBBD35000E465C2 /* LaunchScreen.storyboard */,
 				51EF70611CBBD35000E465C2 /* Info.plist */,
@@ -152,6 +171,14 @@
 			path = UserLoginUITests;
 			sourceTree = "<group>";
 		};
+		CFF1CCC44F2D90BF1A41AB2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				106FAABF3F0566725E1B7D24 /* libPods-UserLogin.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +186,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51EF707A1CBBD35000E465C2 /* Build configuration list for PBXNativeTarget "UserLogin" */;
 			buildPhases = (
+				94D1153DCD1F586A90BFCE17 /* Check Pods Manifest.lock */,
 				51EF70491CBBD35000E465C2 /* Sources */,
 				51EF704A1CBBD35000E465C2 /* Frameworks */,
 				51EF704B1CBBD35000E465C2 /* Resources */,
+				2C8A45697CCEF8F13D01D64E /* Embed Pods Frameworks */,
+				3383BB8F893D996CE80EAF63 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51FEB1A01CBFE7C600086833 /* Login.storyboard in Resources */,
 				51EF70601CBBD35000E465C2 /* LaunchScreen.storyboard in Resources */,
 				51EF705D1CBBD35000E465C2 /* Assets.xcassets in Resources */,
 				51EF705B1CBBD35000E465C2 /* Main.storyboard in Resources */,
@@ -277,6 +308,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C8A45697CCEF8F13D01D64E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UserLogin/Pods-UserLogin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3383BB8F893D996CE80EAF63 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UserLogin/Pods-UserLogin-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94D1153DCD1F586A90BFCE17 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		51EF70491CBBD35000E465C2 /* Sources */ = {
@@ -426,6 +505,7 @@
 		};
 		51EF707B1CBBD35000E465C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83889F2E2ED8C210346F5BEF /* Pods-UserLogin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiao Jiang Zeng (74V9AX4GJ8)";
@@ -438,6 +518,7 @@
 		};
 		51EF707C1CBBD35000E465C2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AFF1A7638E9E9EC6F73723A /* Pods-UserLogin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiao Jiang Zeng (74V9AX4GJ8)";

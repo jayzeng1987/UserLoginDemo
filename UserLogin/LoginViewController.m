@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "Define.h"
+#import <SVProgressHUD.h>
 
 @interface LoginViewController (){
     int _offset;
@@ -28,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self initProcessView];
     [self initLoginView];
 
 }
@@ -57,6 +58,14 @@
  // Pass the selected object to the new view controller.
  }
  */
+#pragma mark - Init Process Alert view
+-(void)initProcessView{
+     //setDefaultStyle设置为SVProgressHUDStyleCustom时，setBackgroundColor和setForegroundColor才有效
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.8f]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+}
 
 #pragma mark - Init Login View Style
 -(void)initLoginView{
@@ -69,9 +78,6 @@
     
     //set login button corner radius.
     [self setLoginBtnStyle];
-    
-    //set navigation back button style
-    [self setNavigationBackButtonStyle];
     
     //[self addTextFieldDidChangeListener];
     
@@ -148,21 +154,17 @@
     UIColor *bgColor = UIColorFromRGB(0xC00000); //UIColorFromRGB 是自己定义的宏
     [[UINavigationBar appearance] setBarTintColor:bgColor];
     
-}
-
--(void)setNavigationBackButtonStyle{
+    //设置backBarButtonItem
     //隐藏backBarButtonItem 文字，只显示<
-    //    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
-    
-    
+    //[[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+
     //自定义返回按钮颜色
     UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] init];
     temporaryBarButtonItem.title = @"";
     self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
 }
-
-
 
 #pragma mark - Keyboard Events
 -(void)addKeyboardObserver{
@@ -278,6 +280,20 @@
     //NSLog(@"Password textFiled changed: %@", curTextField.text);
     [self textFieldDidChange:(UITextField*)sender];
 }
+
+- (IBAction)onLoginClicked:(id)sender {
+    
+    [SVProgressHUD showWithStatus:@"登录中......"];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // time-consuming task
+        [NSThread sleepForTimeInterval:3.0f];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    });
+}
+
 
 #pragma mark - TextField Delegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
