@@ -46,12 +46,12 @@
                                 <exclude reference="ds1-kG-ZiC"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="2CC-0W-gf7"/>
-                                <exclude reference="odg-ej-UQM"/>
-                                <exclude reference="tUt-AS-H0u"/>
                                 <exclude reference="2mN-cM-E0r"/>
                                 <exclude reference="Rfz-JW-dbF"/>
                                 <exclude reference="SOl-MO-UPU"/>
+                                <exclude reference="2CC-0W-gf7"/>
+                                <exclude reference="odg-ej-UQM"/>
+                                <exclude reference="tUt-AS-H0u"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -60,12 +60,12 @@
                                 <include reference="ds1-kG-ZiC"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="2CC-0W-gf7"/>
-                                <include reference="odg-ej-UQM"/>
-                                <include reference="tUt-AS-H0u"/>
                                 <include reference="2mN-cM-E0r"/>
                                 <include reference="Rfz-JW-dbF"/>
                                 <include reference="SOl-MO-UPU"/>
+                                <include reference="2CC-0W-gf7"/>
+                                <include reference="odg-ej-UQM"/>
+                                <include reference="tUt-AS-H0u"/>
                             </mask>
                         </variation>
                     </view>
