@@ -15,6 +15,7 @@ Build
 *.hmap
 *.ipa
 *.xcuserstate
+UserLogin.xcworkspace/xcuserdata/jayz.xcuserdatad/UserInterfaceState.xcuserstate
 
 # CocoaPods
 #
