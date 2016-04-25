@@ -282,6 +282,10 @@
 }
 
 - (IBAction)onLoginClicked:(id)sender {
+    //closed keyboard
+    if (self.currentTextField != nil && ![self.currentTextField isExclusiveTouch]) {
+        [self.currentTextField resignFirstResponder];
+    }
     
     [SVProgressHUD showWithStatus:@"登录中......"];
     
